@@ -1,0 +1,106 @@
+      if (Left_button) //왼쪽 키보드 방향키
+      {
+         if (Rightcollision(hero, box) == NO_CRASH) //충돌한 객체가 없으면 원활하게 이동
+         {
+            hero.xTran -= 2;
+               
+            pongpong(); //캐릭터 통통튀며 이동
+
+            Screen.xTran += 2;
+         }
+            
+         if (Rightcollision(hero, box) == NO_PUSH) //블록이랑 충돌만 하면 이동한거리를 되돌려서 뒤로 밀려난다
+         {
+            hero.xTran += 2;
+            Screen.xTran -= 2;
+         }
+            
+         else if (Rightcollision(hero, box) == PUSH_OK) // 푸쉬 블록이랑 충돌시
+         {
+            if (mapcheck[left_saveZ][left_saveX - 1] == NONE) // 푸시하기전 다음 블록에 아무것도 없으면 이동시킨다
+            {
+               LeftMovecheck = true;
+            }
+         }
+      }
+
+
+      if (Right_button) //오른쪽 키보드 방향키
+      {
+         if (Leftcollision(hero, box) == NO_CRASH) //충돌한 객체가 없으면 원활하게 이동
+         {
+            hero.xTran += 2;
+            pongpong(); //캐릭터 통통튀며 이동
+            Screen.xTran -= 2;
+         }
+            
+         if (Leftcollision(hero, box) == NO_PUSH) //블록이랑 충돌만 하면 이동한거리를 되돌려서 뒤로 밀려난다
+         {
+            hero.xTran -= 2;
+            Screen.xTran += 2;
+         }
+            
+
+         else if (Leftcollision(hero, box) == PUSH_OK) //푸쉬 블록이랑 충돌시
+         {
+            if (mapcheck[right_saveZ][right_saveX + 1] == NONE) // 푸시하기전 다음 블록에 아무것도 없으면 이동시킨다
+            {
+               RightMovecheck = true;
+            }
+         }
+      }
+
+
+      if (Up_button) //윗쪽 키보드 방향키
+      {
+         if (Downcollision(hero, box) == NO_CRASH) //충돌한 객체가 없으면 원활하게 이동
+         {
+            hero.zTran -= 2;
+            pongpong(); //캐릭터 통통튀며 이동
+            //Screen.zTran += 2;
+            //Screen.xRot -= 0.1;
+         }
+            
+         if (Downcollision(hero, box) == NO_PUSH) //블록이랑 충돌만 하면 이동한거리를 되돌려서 뒤로 밀려난다
+         {
+            hero.zTran += 2;
+            //Screen.zTran -= 2;
+            //Screen.xRot += 0.1;
+         }
+            
+         else if (Downcollision(hero, box) == PUSH_OK) // 푸쉬 블록이랑 충돌시
+         {
+            if (mapcheck[up_saveZ - 1][up_saveX] == NONE) // 푸시하기전 다음 블록에 아무것도 없으면 이동시킨다
+            {
+               UpMovecheck = true;
+            }
+         }
+      }
+
+
+      if (Down_button) //아래쪽 키보드 방향키
+      {
+         if (Upcollision(hero, box) == NO_CRASH) //충돌한 객체가 없으면 원활하게 이동
+         {
+            hero.zTran += 2;
+            pongpong(); //캐릭터 통통튀며 이동
+            
+            //Screen.zTran -= 2;
+            //Screen.xRot += 0.1;
+         }
+            
+         if (Upcollision(hero, box) == NO_PUSH) //블록이랑 충돌만 하면 이동한거리를 되돌려서 뒤로 밀려난다
+         {
+            hero.zTran -= 2;
+            //Screen.zTran += 2;
+            //Screen.xRot -= 0.1;
+         }
+            
+         else if (Upcollision(hero, box) == PUSH_OK) // 푸쉬 블록이랑 충돌시
+         {
+            if (mapcheck[down_saveZ + 1][down_saveX] == NONE) // 푸시하기전 다음 블록에 아무것도 없으면 이동시킨다
+            {
+               DownMovecheck = true;
+            }
+         }
+      }
